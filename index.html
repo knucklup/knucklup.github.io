@@ -3,26 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="geike.css">
-    <title>Hoelaat moet ik Geike ophalen?</title>
+    <title>Test ui</title>
 </head>
 <body>
-<h1>Hoelaat moet je Geike gaan ophalen van het paardrijden?</h1>
-<p>Heeft Geike wortels mee?</p>
-<div class="radio-wrapper">
-    <input id="knop1" type="radio" name="wortels" checked="true">
-    <label for="knop1">Ja</label>
-    <input id="knop2" type="radio" name="wortels">
-    <label for="knop2">Nee</label>
-</div>
-<p>Moeten de paardjes in de wei?</p>
-<div class="radio-wrapper">
-    <input id="knop3" type="radio" name="wei" checked="true">
-    <label for="knop3">Ja</label>
-    <input id="knop4" type="radio" name="wei">
-    <label for="knop4">Nee</label>
-</div>
-<p id="ophaaltijdstip">Je moet Geike gaan halen om: 19:40</p>
+<p> Algemeen:
+- Gebruik `<tr>` en `<td>` in plaats van `<div>` voor tabellen.
+JavaScript:
+- Gebruik `localStorage` voor blijvende lokale opslag en `sessionStorage` voor opslag tot de browser gesloten is.
+RXJS:
+- Voor het observeren van veranderingen in een dropdownmenu, gebruik `fromEvent(htmlElement, 'change').subscribe((event) => { /* code */ })`.
 
-<script src="hello.js" type="module"></script>
+- Voor het maken van een subscribeable, initialiseer `Subscription` met `null`.
+
+- Gebruik `map` voor logische transformaties.
+
+- `bufferCount(1)` voor elk signaal, `bufferCount(2)` voor elke 2 signalen.
+
+- Gebruik `tap` voor nevenactiviteiten.
+
+- Initialiseer een observable, stel deze in volgens je behoeften en abonneer erop met `observable.subscribe()`. Zie voorbeeld in `stockmarketdashboard_oplossing_deel2`.
+
+AJAX:
+- Voor AJAX-verzoeken, gebruik `fetch` met de juiste headers en body, zoals:
+fetch(rest_url, {
+    method: "POST",
+    headers: {"content-type": "application/json"},
+    body: JSON.stringify({"title": title, "content": content})
+})
+Angular:
+- Importeer componenten in `app.component.ts`.
+
+- Definieer instantievariabelen in componenten met `@Input() message: string | undefined;`.
+
+- Gebruik `{{ variable }}` om variabelen uit componenten te gebruiken in templates.
+
+- Bij het exporteren van variabelen, gebruik geen aanhalingstekens rond de variabelenaam of `:` in plaats van `=`.
+
+
+
+
+- Voor het toevoegen van notificaties:
+
+  <div *ngFor="let notification of notifications">
+    <app-notification [iconType]="notification.icon" [message]="notification.message"></app-notification>
+  </div>
+
+- Importeer `NgFor` in `app.module.ts` en gebruik `[ ]` rond de attribuutnaam om attributen uit `NgFor`-elementen te halen.
+
+- Definieer routes in `app.routes.ts` en gebruik `href="/index.html"` voor links.
+
+- Voor tweerichtingsgegevensbinding, gebruik `[(ngModel)]="temperature"` met `FormsModule` geïmporteerd.
+
+- Voor het doorgeven van gegevens via URL-routes:
+  { path: 'choice/:choice', component: ChoiceComponent }
+
+  In componenten:
+
+  export class SubcategoriesComponent {
+    choice: string | null = "";
+    constructor(private route: ActivatedRoute) { }
+    ngOnInit(): void {
+      this.choice = this.route.snapshot.paramMap.get('choice');
+      console.log(this.choice);
+    }
+  }
+ 
+
+Samenvatting van de 4 Onderdelen:
+1. JavaScript: Gebruik localStorage/sessionStorage, observeer veranderingen, en werk met AJAX-verzoeken.
+
+2. RxJS: Gebruik observables voor het doorgeven van veranderingen en pas methoden toe voor gegevensbewerking.
+3. Angular: Importeer componenten, gebruik tweerichtingsgegevensbinding, definieer routes en geef gegevens door via URL's.
+
+4. Ajax en Fetch: Haal data op en voer acties uit, gebruik fetch met JSON-gegevens voor plaatsing.
+</p>
 </body>
 </html>
